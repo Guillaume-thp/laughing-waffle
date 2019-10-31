@@ -1,0 +1,15 @@
+<h1>Bienvenue <%= params["first_name"]%> ! </h1>
+<p>Ici c'est notre super site de potins, il est chouette, non ?</p>
+
+<%= link_to "Créé ton nouveau potain ici", new_gossip_path, class:"nav-link" %>
+
+<div class="row" style="margin-left: 0px; margin-right: 0px;"><% Gossip.all.each do |gossip| %>
+    <div class="col-sm-6"><div class="card" style="width: 25rem;">
+   <div class="card-body">
+     <h5 class="card-title"><%=gossip.user.first_name%></h5>
+     <h6 class="card-subtitle mb-2 text-muted"><%=gossip.title%></h6>
+     <a class ="nav-link"<%= link_to "Lien vers ce gossip", gossip_path(:id => gossip.id) %></a>
+   </div>
+ </div>
+</div>
+<% end %>
